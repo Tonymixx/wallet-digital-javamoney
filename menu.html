@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Digital - Menú Principal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+        .navbar-custom {
+            background-color: #1e3c72;
+        }
+        .balance-card {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .action-card {
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 12px;
+        }
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .main-container {
+            display: none; /* Oculto inicialmente para animación de entrada */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark navbar-custom mb-4">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1 fw-bold"><i class="bi bi-wallet2 me-2"></i>Mi Wallet</span>
+            <span id="userEmail" class="navbar-text text-white-50 d-none d-sm-inline me-3"></span>
+            <button id="btnLogout" class="btn btn-outline-light btn-sm">Cerrar Sesión</button>
+        </div>
+    </nav>
+
+    <div class="container main-container">
+        <div class="row g-4">
+            
+            <div class="col-12">
+                <div class="card balance-card p-4 text-center">
+                    <p class="text-white-50 mb-1 text-uppercase fw-bold">Saldo Disponible</p>
+                    <h1 class="display-3 fw-bold mb-0">$<span id="saldoActual">0.00</span></h1>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card action-card text-center p-4 bg-white border-0 shadow-sm" id="goToDeposit">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-arrow-down-circle-fill display-5"></i>
+                    </div>
+                    <h5 class="fw-bold">Realizar Depósito</h5>
+                    <p class="text-muted small mb-0">Suma fondos a tu cuenta de manera inmediata.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card action-card text-center p-4 bg-white border-0 shadow-sm" id="goToSendMoney">
+                    <div class="text-success mb-3">
+                        <i class="bi bi-arrow-up-right-circle-fill display-5"></i>
+                    </div>
+                    <h5 class="fw-bold">Enviar Dinero</h5>
+                    <p class="text-muted small mb-0">Transfiere de forma rápida a otros usuarios.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card action-card text-center p-4 bg-white border-0 shadow-sm" id="goToTransactions">
+                    <div class="text-warning mb-3">
+                        <i class="bi bi-clock-history display-5"></i>
+                    </div>
+                    <h5 class="fw-bold">Transacciones</h5>
+                    <p class="text-muted small mb-0">Revisa el historial detallado de tus movimientos.</p>
+                </div>
+            </div>
+
+            <div class="col-12 mt-4">
+                <h4 class="fw-bold text-secondary mb-3">Preguntas Frecuentes</h4>
+                <div class="accordion" id="walletAccordion">
+                    <div class="accordion-item shadow-sm border-0 mb-2">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                ¿Cuánto tarda en acreditarse un depósito?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#walletAccordion">
+                            <div class="accordion-body text-muted">
+                                Todos los depósitos realizados en nuestra plataforma se acreditan de manera inmediata y automática en tu saldo disponible.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item shadow-sm border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                ¿Es seguro enviar dinero por la app?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#walletAccordion">
+                            <div class="accordion-body text-muted">
+                                Sí, todas las transacciones están encriptadas y validadas con los más altos estándares de simulación y protección digital.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-danger">¿Cerrar Sesión?</h5>
+                    <button type="button" class="btn-close" data-bs-shadow="none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-muted">
+                    ¿Estás seguro de que deseas salir de tu billetera digital? Deberás ingresar tus credenciales nuevamente la próxima vez.
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmLogout">Sí, salir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/menu.js"></script>
+</body>
+</html>
