@@ -28,6 +28,29 @@
         </div>
     </nav>
 
+    <div class="card p-3 mb-4 shadow-sm">
+    <h5 class="card-title text-primary">👥 Mi Agenda de Contactos</h5>
+    
+    <div class="row g-2 mb-3">
+        <div class="col-md-5">
+            <input type="text" id="contactName" class="form-control" placeholder="Nombre del contacto">
+        </div>
+        <div class="col-md-5">
+            <input type="email" id="contactEmail" class="form-control" placeholder="Correo (ejemplo@mail.com)">
+        </div>
+        <div class="col-md-2 d-grid">
+            <button type="button" id="btnSaveContact" class="btn btn-success">Guardar</button>
+        </div>
+    </div>
+
+    <div class="mb-2">
+        <label for="contactSelect" class="form-label fw-bold">Seleccionar un contacto guardado:</label>
+        <select id="contactSelect" class="form-select">
+            <option value="">-- Selecciona para autocompletar --</option>
+        </select>
+    </div>
+</div>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
